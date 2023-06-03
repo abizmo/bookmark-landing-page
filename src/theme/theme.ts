@@ -44,6 +44,12 @@ const theme: DefaultTheme = {
       bold: 500,
     },
   },
+  sizes: {
+    maxWidth: '70rem',
+  },
+  padding: {
+    default: '2rem',
+  },
 };
 
 export default theme;
