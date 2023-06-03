@@ -42,5 +42,11 @@ declare module 'styled-components' {
         bold: number;
       };
     };
+    sizes: {
+      maxWidth: string;
+    };
+    padding: {
+      default: string;
+    };
   }
 }
