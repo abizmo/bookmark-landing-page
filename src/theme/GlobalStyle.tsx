@@ -4,7 +4,8 @@ import resetCSS from './resetCSS';
 const GlobalStyle = createGlobalStyle`
   ${resetCSS}
 
-  body {
+  * {
+    font-family: ${({ theme }) => theme.typography.family.sans};
   }
 `;
 
