@@ -11,6 +11,9 @@ const theme: DefaultTheme = {
       900: 'hsl(229, 31%, 21%)',
     },
   },
+  shadows: {
+    primary: '0px 4px 4px 0 hsla(231, 69%, 60%, .12)',
+  },
   typography: {
     family: {
       sans: 'Rubik, sans-serif',
