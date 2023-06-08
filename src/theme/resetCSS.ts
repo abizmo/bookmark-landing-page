@@ -8,6 +8,9 @@ const resetCSS = css`
   html,
   body {
     margin: 0;
+  }
+
+  button {
     padding: 0;
   }
 `;

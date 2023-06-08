@@ -9,6 +9,9 @@ declare module 'styled-components' {
         [key: number]: string;
       };
     };
+    shadows: {
+      primary: string;
+    };
     typography: {
       family: {
         sans: string;
