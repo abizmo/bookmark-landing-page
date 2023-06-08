@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 type ButtonProps = {
   fullWidth?: boolean;
-  variant?: 'primary' | 'secondary' | 'accent' | 'outline';
+  variant?: 'primary' | 'neutral' | 'accent' | 'outline';
 };
 
 const ButtonStyled = styled.a<{ fullWidth: boolean }>`
@@ -17,52 +17,52 @@ const ButtonStyled = styled.a<{ fullWidth: boolean }>`
   font-size: ${({ theme }) => theme.typography.size.sm};
   font-weight: ${({ theme }) => theme.typography.weight.bold};
   width: ${({ fullWidth }) => (fullWidth ? '100%' : 'fit-content')};
-`;
 
-const ButtonPrimary = styled(ButtonStyled)`
-  background-color: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.neutral[100]};
-  border: 2px solid ${({ theme }) => theme.colors.primary};
-  box-shadow: ${({ theme }) => theme.shadows.primary};
+  &.primary {
+    background-color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.neutral[100]};
+    border: 2px solid ${({ theme }) => theme.colors.primary};
+    box-shadow: ${({ theme }) => theme.shadows.primary};
 
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.neutral[100]};
-    color: ${({ theme }) => theme.colors.primary};
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.neutral[100]};
+      color: ${({ theme }) => theme.colors.primary};
+    }
   }
-`;
 
-const ButtonSecondary = styled(ButtonStyled)`
-  background-color: ${({ theme }) => theme.colors.neutral[200]};
-  color: ${({ theme }) => theme.colors.neutral[600]};
-  border: 2px solid ${({ theme }) => theme.colors.neutral[200]};
-  box-shadow: ${({ theme }) => theme.shadows.primary};
+  &.neutral {
+    background-color: ${({ theme }) => theme.colors.neutral[200]};
+    color: ${({ theme }) => theme.colors.neutral[600]};
+    border: 2px solid ${({ theme }) => theme.colors.neutral[200]};
+    box-shadow: ${({ theme }) => theme.shadows.primary};
 
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.neutral[100]};
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.neutral[100]};
+    }
   }
-`;
 
-const ButtonAccent = styled(ButtonStyled)`
-  background-color: ${({ theme }) => theme.colors.accent};
-  color: ${({ theme }) => theme.colors.neutral[100]};
-  border: 2px solid ${({ theme }) => theme.colors.accent};
-  box-shadow: ${({ theme }) => theme.shadows.primary};
+  &.accent {
+    background-color: ${({ theme }) => theme.colors.accent};
+    color: ${({ theme }) => theme.colors.neutral[100]};
+    border: 2px solid ${({ theme }) => theme.colors.accent};
+    box-shadow: ${({ theme }) => theme.shadows.primary};
 
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.neutral[100]};
-    color: ${({ theme }) => theme.colors.accent};
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.neutral[100]};
+      color: ${({ theme }) => theme.colors.accent};
+    }
   }
-`;
 
-const ButtonOutline = styled(ButtonStyled)`
-  background-color: transparent;
-  color: ${({ theme }) => theme.colors.neutral[100]};
-  border: 2px solid ${({ theme }) => theme.colors.neutral[100]};
-  text-transform: uppercase;
+  &.outline {
+    background-color: transparent;
+    color: ${({ theme }) => theme.colors.neutral[100]};
+    border: 2px solid ${({ theme }) => theme.colors.neutral[100]};
+    text-transform: uppercase;
 
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.neutral[100]};
-    color: ${({ theme }) => theme.colors.accent};
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.neutral[100]};
+      color: ${({ theme }) => theme.colors.accent};
+    }
   }
 `;
 
@@ -72,32 +72,11 @@ const Button = ({
   children,
   ...rest
 }: ButtonProps & AnchorHTMLAttributes<HTMLAnchorElement>) => {
-  switch (variant) {
-    case 'secondary':
-      return (
-        <ButtonSecondary fullWidth={fullWidth} {...rest}>
-          {children}
-        </ButtonSecondary>
-      );
-    case 'accent':
-      return (
-        <ButtonAccent fullWidth={fullWidth} {...rest}>
-          {children}
-        </ButtonAccent>
-      );
-    case 'outline':
-      return (
-        <ButtonOutline fullWidth={fullWidth} {...rest}>
-          {children}
-        </ButtonOutline>
-      );
-    default:
-      return (
-        <ButtonPrimary fullWidth={fullWidth} {...rest}>
-          {children}
-        </ButtonPrimary>
-      );
-  }
+  return (
+    <ButtonStyled className={variant} fullWidth={fullWidth} {...rest}>
+      {children}
+    </ButtonStyled>
+  );
 };
 
 export default Button;
