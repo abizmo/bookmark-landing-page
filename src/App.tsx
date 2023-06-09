@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import CloseIcon from './assets/images/icon-close.svg';
 import MenuIcon from './assets/images/icon-hamburger.svg';
 import BookmarkLogo from './components/BookmarLogo';
@@ -6,6 +6,9 @@ import NavWrapper from './components/Header/components/NavWrapper';
 import { Container } from './components/UI';
 import Theme from './theme';
 import useMediaQuery from './hooks/useMediaQuery';
+import iconFacebook from './assets/images/icon-facebook.svg';
+import iconTwitter from './assets/images/icon-twitter.svg';
+import { useEffect, useState } from 'react';
 
 const SROnly = styled.span`
   position: absolute;
@@ -19,26 +22,110 @@ const SROnly = styled.span`
   border: 0;
 `;
 
+const HeaderStyle = styled.header<{ isOpen: boolean }>`
+  ${({ theme, isOpen }) =>
+    isOpen &&
+    css`
+      background: ${theme.colors.neutral[990]};
+      color: ${theme.colors.neutral[100]};
+      position: fixed;
+      inset: 0;
+
+      & .logo-text,
+      & .logo-primary {
+        fill: white;
+      }
+
+      & .logo-neutral {
+        fill: ${theme.colors.neutral[990]};
+      }
+    `}
+  padding-top: 2.5rem;
+
+  @media (min-width: 70em) {
+    padding-top: 3rem;
+  }
+`;
+
+const Icons = styled.div`
+  display: flex;
+  gap: 2.5rem;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  translate: -50%;
+`;
+
+const MobileNavToggle = styled.button`
+  border: none;
+  background-color: transparent;
+`;
+
 function Header({ logo: Logo, closeIcon, menuIcon, children }) {
   const isDesktop = useMediaQuery('(min-width: 70em)');
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (isDesktop) setIsOpen(false);
+  }, [isDesktop]);
+
+  const toggleMobileNav = () => setIsOpen((prev) => !prev);
 
   return (
-    <header>
+    <HeaderStyle isOpen={isOpen}>
       <Container>
         <NavWrapper>
           <a href='/'>
             <Logo />
           </a>
-          {!isDesktop && (
-            <button aria-controls='primary-navigation' aria-expanded='false'>
-              <img src={menuIcon} alt='Menu' aria-hidden='true' />
-              <img src={closeIcon} alt='Close' aria-hidden='true' />
+          {!isDesktop ? (
+            <MobileNavToggle
+              onClick={toggleMobileNav}
+              aria-controls='primary-navigation'
+              aria-expanded='false'
+            >
+              {isOpen ? (
+                <img src={closeIcon} alt='Close' aria-hidden='true' />
+              ) : (
+                <img src={menuIcon} alt='Menu' aria-hidden='true' />
+              )}
               <SROnly>Menu</SROnly>
-            </button>
+            </MobileNavToggle>
+          ) : (
+            <nav id='primary-navigation'>
+              <ul role='list'>
+                <li>Features</li>
+                <li>Pricing</li>
+                <li>Contact</li>
+                <li>
+                  <a href='#'>Login</a>
+                </li>
+              </ul>
+            </nav>
           )}
         </NavWrapper>
+        {!isDesktop && isOpen && (
+          <>
+            <nav id='primary-navigation'>
+              <ul role='list'>
+                <li>Features</li>
+                <li>Pricing</li>
+                <li>Contact</li>
+                <li>
+                  <a href='#'>Login</a>
+                </li>
+              </ul>
+            </nav>
+            <Icons>
+              <img src={iconFacebook} alt='facebook' />
+              <img src={iconTwitter} alt='twitter' />
+            </Icons>
+          </>
+        )}
       </Container>
-    </header>
+    </HeaderStyle>
   );
 }
 
