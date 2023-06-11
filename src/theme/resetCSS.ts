@@ -10,8 +10,13 @@ const resetCSS = css`
     margin: 0;
   }
 
-  button {
+  button,
+  ul {
     padding: 0;
+  }
+
+  ul[role='list'] {
+    list-style: none;
   }
 `;
 

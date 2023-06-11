@@ -57,11 +57,12 @@ const ButtonStyled = styled.a<{ fullWidth: boolean }>`
     background-color: transparent;
     color: ${({ theme }) => theme.colors.neutral[100]};
     border: 2px solid ${({ theme }) => theme.colors.neutral[100]};
+    font-size: ${({ theme }) => theme.typography.size.lg};
     text-transform: uppercase;
 
     &:hover {
       background-color: ${({ theme }) => theme.colors.neutral[100]};
-      color: ${({ theme }) => theme.colors.accent};
+      color: ${({ theme }) => theme.colors.neutral[900]};
     }
   }
 `;
