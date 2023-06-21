@@ -1,17 +1,30 @@
-import CloseIcon from './assets/images/icon-close.svg';
-import MenuIcon from './assets/images/icon-hamburger.svg';
 import BookmarkLogo from './components/BookmarLogo';
 import Header from './components/Header';
 import { Container } from './components/UI';
 import Theme from './theme';
+import iconFacebook from './assets/images/icon-facebook.svg';
+import iconTwitter from './assets/images/icon-twitter.svg';
 
 function App() {
   return (
     <Theme>
-      <Header logo={BookmarkLogo} closeIcon={CloseIcon} menuIcon={MenuIcon}>
-        hola
+      <Header>
+        <Header.Logo>
+          <BookmarkLogo />
+        </Header.Logo>
+        <Header.NavBar>
+          <Header.NavList>
+            <Header.NavItem href='#'>Feature</Header.NavItem>
+            <Header.NavItem href='#'>Pricing</Header.NavItem>
+            <Header.NavItem href='#'>Contact</Header.NavItem>
+          </Header.NavList>
+          <Header.Socials>
+            <Header.SocialLink alt='facebook' icon={iconFacebook} href='#' />
+            <Header.SocialLink alt='twitter' icon={iconTwitter} href='#' />
+          </Header.Socials>
+        </Header.NavBar>
       </Header>
-      <main style={{ marginTop: '145px' }}>
+      <main>
         <section>
           <Container>
             <img src='' alt='hero' />
@@ -165,6 +178,7 @@ function App() {
       </main>
       <footer>
         <Container>
+          {/* TODO: Fix Bookmarklogo */}
           <BookmarkLogo textFill='#FFF' />
           <ul>
             <li>Features</li>

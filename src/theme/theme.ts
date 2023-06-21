@@ -55,6 +55,9 @@ const theme: DefaultTheme = {
   padding: {
     default: '2rem',
   },
+  breakPoints: {
+    large: 'min-width: 70em',
+  },
 };
 
 export default theme;

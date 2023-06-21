@@ -6,7 +6,8 @@ const resetCSS = css`
   }
 
   html,
-  body {
+  body,
+  ul {
     margin: 0;
   }
 
@@ -17,6 +18,11 @@ const resetCSS = css`
 
   ul[role='list'] {
     list-style: none;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
   }
 `;
 

@@ -1,22 +1,34 @@
 import styled, { css } from 'styled-components';
 import useMediaQuery from '../../hooks/useMediaQuery';
-import { useEffect, useState } from 'react';
+import {
+  PropsWithChildren,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { Container, SROnly } from '../UI';
-import NavWrapper from './components/NavWrapper';
-import iconFacebook from '../../assets/images/icon-facebook.svg';
-import iconTwitter from '../../assets/images/icon-twitter.svg';
+import closeIcon from '../../assets/images/icon-close.svg';
+import menuIcon from '../../assets/images/icon-hamburger.svg';
 import { Button } from '..';
+import theme from '../../theme/theme';
 
-const HeaderStyle = styled.header<{ isOpen: boolean }>`
-  position: fixed;
+const HeaderContainer = styled.header<{ isOpen: boolean }>`
   inset: 0 0 auto;
   padding-top: 2.5rem;
+  & + * {
+    margin-top: 5rem;
+  }
+
   ${({ theme, isOpen }) =>
     isOpen &&
     css`
+      position: fixed;
       background: ${theme.colors.neutral[995]};
       color: ${theme.colors.neutral[100]};
       inset: 0;
+      user-select: none;
+      touch-action: none;
 
       & .logo-text,
       & .logo-primary {
@@ -26,22 +38,18 @@ const HeaderStyle = styled.header<{ isOpen: boolean }>`
       & .logo-neutral {
         fill: ${theme.colors.neutral[995]};
       }
+      & + * {
+        margin-top: 9rem;
+      }
     `}
 
-  @media (min-width: 70em) {
+  @media (${({ theme }) => theme.breakPoints.large}) {
     padding-top: 3rem;
+    position: static;
+    & + * {
+      margin-top: 7rem;
+    }
   }
-`;
-
-const Icons = styled.div`
-  display: flex;
-  gap: 2.5rem;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  bottom: 2.5rem;
-  left: 50%;
-  translate: -50%;
 `;
 
 const MobileNavToggle = styled.button`
@@ -49,62 +57,22 @@ const MobileNavToggle = styled.button`
   background-color: transparent;
 `;
 
-const MobileNav = styled.nav`
-  margin-top: 2.5rem;
-  margin-top: 1.5rem;
+interface HeaderContextType {
+  isOpen: boolean;
+  toggleMobileNav: () => void;
+}
 
-  & a {
-    font-size: ${({ theme }) => theme.typography.size.lg};
-    line-height: ${({ theme }) => theme.typography.lineHeight.tight};
-    color: ${({ theme }) => theme.colors.neutral[100]};
-    text-decoration: none;
-    text-transform: uppercase;
-  }
+const HeaderContext = createContext<HeaderContextType | null>(null);
 
-  & li + li {
-    margin-top: 0.25rem;
-  }
-
-  & li:first-child {
-    border-top: 1px solid ${({ theme }) => theme.colors.neutral[618]};
-  }
-
-  & li {
-    border-bottom: 1px solid ${({ theme }) => theme.colors.neutral[618]};
-  }
-`;
-
-const MobileNavItem = styled.a`
-  display: grid;
-  place-content: center;
-  height: 4rem;
-`;
-
-const DesktopNav = styled.nav`
+const Flex = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 3rem;
+  flex-wrap: wrap;
 `;
 
-const DesktopNavList = styled.ul`
-  display: flex;
-  gap: 3rem;
-
-  & a {
-    font-size: ${({ theme }) => theme.typography.size.xs};
-    letter-spacing: ${({ theme }) => theme.typography.letterSpacing.wide};
-    color: ${({ theme }) => theme.colors.neutral[900]};
-    text-decoration: none;
-    text-transform: uppercase;
-
-    &:hover {
-      color: ${({ theme }) => theme.colors.accent};
-    }
-  }
-`;
-
-function Header({ logo: Logo, closeIcon, menuIcon, children }) {
-  const isDesktop = useMediaQuery('(min-width: 70em)');
+function Header({ children }: PropsWithChildren) {
+  const isDesktop = useMediaQuery(`(${theme.breakPoints.large})`);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -114,75 +82,157 @@ function Header({ logo: Logo, closeIcon, menuIcon, children }) {
   const toggleMobileNav = () => setIsOpen((prev) => !prev);
 
   return (
-    <HeaderStyle isOpen={isOpen}>
-      <Container>
-        <NavWrapper>
-          <a href='/'>
-            <Logo />
-          </a>
-          {!isDesktop ? (
-            <MobileNavToggle
-              onClick={toggleMobileNav}
-              aria-controls='primary-navigation'
-              aria-expanded='false'
-            >
-              {isOpen ? (
-                <img src={closeIcon} alt='Close' aria-hidden='true' />
-              ) : (
-                <img src={menuIcon} alt='Menu' aria-hidden='true' />
-              )}
-              <SROnly>Menu</SROnly>
-            </MobileNavToggle>
-          ) : (
-            <DesktopNav id='primary-navigation'>
-              <DesktopNavList role='list'>
-                <li>
-                  <a href='#'>Features</a>
-                </li>
-                <li>
-                  <a href='#'>Pricing</a>
-                </li>
-                <li>
-                  <a href='#'>Contact</a>
-                </li>
-              </DesktopNavList>
-              <Button variant='accent' href='#'>
-                Login
-              </Button>
-            </DesktopNav>
-          )}
-        </NavWrapper>
-        {!isDesktop && isOpen && (
-          <>
-            <MobileNav id='primary-navigation'>
-              <ul role='list'>
-                <li>
-                  <MobileNavItem href='#'>Features</MobileNavItem>
-                </li>
-                <li>
-                  <MobileNavItem href='#'>Pricing</MobileNavItem>
-                </li>
-                <li>
-                  <MobileNavItem href='#'>Contact</MobileNavItem>
-                </li>
-              </ul>
-            </MobileNav>
-            <Button variant='outline' fullWidth href='#'>
-              Login
-            </Button>
-            <Icons>
-              <a href='#'>
-                <img src={iconFacebook} alt='facebook' />
-              </a>
-              <a href='#'>
-                <img src={iconTwitter} alt='twitter' />
-              </a>
-            </Icons>
-          </>
-        )}
-      </Container>
-    </HeaderStyle>
+    <HeaderContext.Provider value={{ isOpen, toggleMobileNav }}>
+      <HeaderContainer isOpen={isOpen}>
+        <Container>
+          <Flex>{children}</Flex>
+        </Container>
+      </HeaderContainer>
+    </HeaderContext.Provider>
   );
 }
+
+function HeaderLogo({ children }: PropsWithChildren) {
+  return <a href='/'>{children}</a>;
+}
+
+Header.Logo = HeaderLogo;
+
+function HeaderNavBar({ children }: PropsWithChildren) {
+  const isDesktop = useMediaQuery(`(${theme.breakPoints.large})`);
+  const context = useContext(HeaderContext);
+  if (!context) throw new Error('must be used within a HeaderProvider');
+  const { isOpen, toggleMobileNav } = context;
+
+  return (
+    <>
+      {!isDesktop && (
+        <MobileNavToggle
+          onClick={toggleMobileNav}
+          aria-controls='primary-navigation'
+          aria-expanded='false'
+        >
+          {isOpen ? (
+            <img src={closeIcon} alt='Close' aria-hidden='true' />
+          ) : (
+            <img src={menuIcon} alt='Menu' aria-hidden='true' />
+          )}
+          <SROnly>Menu</SROnly>
+        </MobileNavToggle>
+      )}
+      {(isOpen || isDesktop) && children}
+    </>
+  );
+}
+
+Header.NavBar = HeaderNavBar;
+
+const NavListContainer = styled.nav`
+  flex-basis: 100%;
+  text-transform: uppercase;
+  color: white;
+  font-weight: ${({ theme }) => theme.typography.weight.bold};
+  font-size: ${({ theme }) => theme.typography.size.lg};
+  text-align: center;
+  margin-top: 2.5rem;
+
+  @media (${({ theme }) => theme.breakPoints.large}) {
+    flex-basis: auto;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    color: ${({ theme }) => theme.colors.neutral[900]};
+    margin-top: 0;
+  }
+`;
+
+const NavList = styled.ul`
+  display: grid;
+  gap: 0.25rem;
+  margin-bottom: 1.5rem;
+
+  @media (${({ theme }) => theme.breakPoints.large}) {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 0;
+  }
+`;
+
+function HeaderNavList({ children }: PropsWithChildren) {
+  const isDesktop = useMediaQuery(`(${theme.breakPoints.large})`);
+
+  return (
+    <NavListContainer>
+      <NavList role='list'>{children}</NavList>
+      <Button variant={isDesktop ? 'accent' : 'outline'} fullWidth>
+        Login
+      </Button>
+    </NavListContainer>
+  );
+}
+
+Header.NavList = HeaderNavList;
+
+const ItemContainer = styled.li`
+  padding: 1.25rem;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.neutral[618]};
+
+  &:first-child {
+    border-top: 1px solid ${({ theme }) => theme.colors.neutral[618]};
+  }
+
+  @media (${({ theme }) => theme.breakPoints.large}) {
+    border: none;
+    &:hover {
+      color: ${({ theme }) => theme.colors.accent};
+    }
+  }
+`;
+
+function HeaderNavItem({
+  children,
+  href,
+}: PropsWithChildren<{ href: string }>) {
+  return (
+    <ItemContainer>
+      <a href={href}>{children}</a>
+    </ItemContainer>
+  );
+}
+
+Header.NavItem = HeaderNavItem;
+
+const SocialsContainer = styled.div`
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2.5rem;
+`;
+
+function HeaderSocials({ children }: PropsWithChildren) {
+  const isDesktop = useMediaQuery(`(${theme.breakPoints.large})`);
+
+  return !isDesktop && <SocialsContainer>{children}</SocialsContainer>;
+}
+
+Header.Socials = HeaderSocials;
+
+interface SocialLinkType {
+  alt: string;
+  icon: string;
+  href: string;
+}
+
+function HeaderSocialLink({ alt, icon, href }: SocialLinkType) {
+  return (
+    <a href={href}>
+      <img src={icon} alt={alt} />
+    </a>
+  );
+}
+
+Header.SocialLink = HeaderSocialLink;
 
 export default Header;

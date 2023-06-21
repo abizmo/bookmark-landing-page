@@ -2,6 +2,9 @@ import 'styled-components';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
+    breakPoints: {
+      large: string;
+    };
     colors: {
       primary: string;
       accent: string;
