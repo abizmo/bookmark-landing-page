@@ -8,7 +8,9 @@ const theme: DefaultTheme = {
       100: 'hsl(0, 0%, 100%)',
       200: 'hsl(0, 0%, 95%)',
       600: 'hsl(229, 8%, 60%)',
+      618: 'hsl(229, 8%, 60%, .18)',
       900: 'hsl(229, 31%, 21%)',
+      995: 'hsla(229, 31%, 21%, .95)',
     },
   },
   shadows: {
@@ -52,6 +54,9 @@ const theme: DefaultTheme = {
   },
   padding: {
     default: '2rem',
+  },
+  breakPoints: {
+    large: 'min-width: 70em',
   },
 };
 

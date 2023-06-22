@@ -6,12 +6,23 @@ const resetCSS = css`
   }
 
   html,
-  body {
+  body,
+  ul {
     margin: 0;
   }
 
-  button {
+  button,
+  ul {
     padding: 0;
+  }
+
+  ul[role='list'] {
+    list-style: none;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
   }
 `;
 
