@@ -37,12 +37,14 @@ const theme: DefaultTheme = {
       xs: '.8125rem',
       sm: '.875rem',
       md: '1rem',
-      base: '1.125rem',
+      // base: '1.125rem',
       lg: '1.25rem',
       xl: '1.5rem',
       '2xl': '1.875rem',
       '3xl': '2rem',
       '4xl': '3rem',
+      base: 'clamp(0.875rem, 0.7492rem + 0.5369vw, 1.125rem)',
+      large: 'clamp(1.875rem, 1.3087rem + 2.4161vw, 3rem)',
     },
     weight: {
       regular: 400,
@@ -50,7 +52,7 @@ const theme: DefaultTheme = {
     },
   },
   sizes: {
-    maxWidth: '70rem',
+    maxWidth: '70em',
   },
   padding: {
     default: '2rem',

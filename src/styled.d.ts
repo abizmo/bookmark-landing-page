@@ -42,6 +42,7 @@ declare module 'styled-components' {
         '2xl': string;
         '3xl': string;
         '4xl': string;
+        large: string;
       };
       weight: {
         regular: number;
