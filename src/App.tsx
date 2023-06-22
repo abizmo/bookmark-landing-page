@@ -178,8 +178,7 @@ function App() {
       </main>
       <footer>
         <Container>
-          {/* TODO: Fix Bookmarklogo */}
-          <BookmarkLogo textFill='#FFF' />
+          <BookmarkLogo />
           <ul>
             <li>Features</li>
             <li>Pricing</li>

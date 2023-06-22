@@ -1,10 +1,4 @@
-interface BookmarkLogoProps {
-  textFill?: string;
-  circleFill?: string;
-  flagFill?: string;
-}
-
-function BookmarkLogo({ textFill, circleFill, flagFill }: BookmarkLogoProps) {
+function BookmarkLogo() {
   return (
     <svg width='148' height='25' xmlns='http://www.w3.org/2000/svg'>
       <g fill='none' fillRule='evenodd'>
