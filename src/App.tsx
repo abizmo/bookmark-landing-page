@@ -1,6 +1,6 @@
 import BookmarkLogo from './components/BookmarLogo';
 import Header from './components/Header';
-import { Container } from './components/UI';
+import { Container, Typo } from './components/UI';
 import Theme from './theme';
 import iconFacebook from './assets/images/icon-facebook.svg';
 import iconTwitter from './assets/images/icon-twitter.svg';
@@ -29,12 +29,12 @@ function App() {
           <Container>
             <img src='' alt='hero' />
             <div>
-              <h1>A Simple Bookmark Manager</h1>
-              <p>
+              <Typo level='h1'>A Simple Bookmark Manager</Typo>
+              <Typo>
                 A clean and simple interface to organize your favourite
                 websites. Open a new browser tab and see your sites load
                 instantly. Try it for free.
-              </p>
+              </Typo>
               <div>
                 <button>Get it on Chrome</button>
                 <button>Get it on Firefox</button>
@@ -44,12 +44,12 @@ function App() {
         </section>
         <section>
           <Container>
-            <h2>Features</h2>
-            <p>
+            <Typo level='h2'>Features</Typo>
+            <Typo>
               Our aim is to make it quick and easy for you to access your
               favourite websites. Your bookmarks sync between your devices so
               you can access them on the go.
-            </p>
+            </Typo>
             <ul>
               <li>Simple Bookmarking</li>
               <li>Speedy Searching</li>
@@ -87,11 +87,11 @@ function App() {
         </section>
         <Container>
           <section>
-            <h2>Download the extension</h2>
-            <p>
+            <Typo level='h2'>Download the extension</Typo>
+            <Typo>
               We’ve got more browsers in the pipeline. Please do let us know if
               you’ve got a favourite you’d like us to prioritize.
-            </p>
+            </Typo>
             <ul>
               <li>
                 <h4>Add to Chrome Minimum</h4>
@@ -111,11 +111,11 @@ function App() {
             </ul>
           </section>
           <section>
-            <h2>Frequently Asked Questions</h2>
-            <p>
+            <Typo level='h2'>Frequently Asked Questions</Typo>
+            <Typo>
               Here are some of our FAQs. If you have any other questions you’d
               like answered please feel free to email us.
-            </p>
+            </Typo>
             <ul>
               <li>
                 {/* <!-- Question 1 --> */}

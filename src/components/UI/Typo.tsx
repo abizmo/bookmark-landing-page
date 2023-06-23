@@ -10,6 +10,13 @@ const Typo1 = styled.h1`
   line-height: ${({ theme }) => theme.typography.lineHeight.tight};
 `;
 
+const Typo2 = styled.h2`
+  color: ${({ theme }) => theme.colors.neutral[900]};
+  font-size: ${({ theme }) => theme.typography.size.xl};
+  font-weight: ${({ theme }) => theme.typography.weight.bold};
+  line-height: ${({ theme }) => theme.typography.lineHeight.tight};
+`;
+
 const TypoP = styled.p<{ isDesktop: boolean }>`
   color: ${({ theme }) => theme.colors.neutral[600]};
   font-size: ${({ theme }) => theme.typography.size.base};
@@ -22,14 +29,20 @@ const TypoP = styled.p<{ isDesktop: boolean }>`
 `;
 
 interface Typo {
-  level?: 'h1' | 'p';
+  level?: 'h1' | 'h2' | 'p';
 }
+
+const typos = {
+  h1: Typo1,
+  h2: Typo2,
+  p: TypoP,
+};
 
 function Typo({ children, level }: PropsWithChildren<Typo>) {
   const isDesktop = useMediaQuery(`(${theme.breakPoints.large})`);
+  const Component = typos[level || 'p'];
 
-  if (level === 'h1') return <Typo1>{children}</Typo1>;
-  return <TypoP isDesktop={isDesktop}>{children}</TypoP>;
+  return <Component isDesktop={isDesktop}>{children}</Component>;
 }
 
 export default Typo;
