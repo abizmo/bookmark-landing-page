@@ -4,8 +4,21 @@ import { Container } from './components/UI';
 import Theme from './theme';
 import iconFacebook from './assets/images/icon-facebook.svg';
 import iconTwitter from './assets/images/icon-twitter.svg';
+import styled from 'styled-components';
+import { Button } from './components';
+import useMediaQuery from './hooks/useMediaQuery';
+import theme from './theme/theme';
+import Form from './components/Form';
+
+const Section = styled.section`
+  background: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.neutral[100]};
+  padding-block: 4rem;
+`;
 
 function App() {
+  const isDesktop = useMediaQuery(`(${theme.breakPoints.large})`);
+
   return (
     <Theme>
       <Header>
@@ -165,16 +178,23 @@ function App() {
             <button>More Info</button>
           </section>
         </Container>
-        <section>
-          <Container>
+        <Section>
+          <Container maxWidth={isDesktop ? '28rem' : undefined}>
             <p>35,000+ already joined</p>
             <h2>Stay up-to-date with what we’re doing</h2>
-            <form>
-              <input type='email' name='' id='' />
-              <button>Contact Us</button>
-            </form>
+            <Form>
+              <Form.Input
+                type='email'
+                name=''
+                id=''
+                placeholder='example@email.com'
+              />
+              <Button variant='accent' fullWidth={!isDesktop}>
+                Contact Us
+              </Button>
+            </Form>
           </Container>
-        </section>
+        </Section>
       </main>
       <footer>
         <Container>
