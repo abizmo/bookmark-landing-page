@@ -1,12 +1,12 @@
-import { AnchorHTMLAttributes } from 'react';
+import {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  FC,
+  PropsWithChildren,
+} from 'react';
 import styled from 'styled-components';
 
-type ButtonProps = {
-  fullWidth?: boolean;
-  variant?: 'primary' | 'neutral' | 'accent' | 'outline';
-};
-
-const ButtonStyled = styled.a<{ fullWidth: boolean }>`
+const Anchor = styled.a<{ fullWidth: boolean }>`
   display: grid;
   place-content: center;
   padding-inline: 24px;
@@ -67,16 +67,28 @@ const ButtonStyled = styled.a<{ fullWidth: boolean }>`
   }
 `;
 
-const Button = ({
-  fullWidth = false,
-  variant = 'primary',
-  children,
-  ...rest
-}: ButtonProps & AnchorHTMLAttributes<HTMLAnchorElement>) => {
+interface CommonProps {
+  fullWidth?: boolean;
+  variant?: 'primary' | 'neutral' | 'accent' | 'outline';
+}
+
+type ButtonProps =
+  | ({ as: 'button' } & CommonProps & ButtonHTMLAttributes<HTMLButtonElement>)
+  | ({ as: 'link' } & CommonProps & AnchorHTMLAttributes<HTMLAnchorElement>);
+
+const Button: FC<PropsWithChildren<ButtonProps>> = (props) => {
+  if (props.as === 'button') {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { children, as, ...rest } = props;
+    return <button {...rest}>{children}</button>;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { variant, as, fullWidth = false, children, ...rest } = props;
   return (
-    <ButtonStyled className={variant} fullWidth={fullWidth} {...rest}>
+    <Anchor className={variant} fullWidth={fullWidth} {...rest}>
       {children}
-    </ButtonStyled>
+    </Anchor>
   );
 };
 

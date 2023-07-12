@@ -41,7 +41,7 @@ export function HeaderNavList({ children }: PropsWithChildren) {
   return (
     <NavListContainer>
       <NavList role='list'>{children}</NavList>
-      <Button variant={isDesktop ? 'accent' : 'outline'} fullWidth>
+      <Button as='link' variant={isDesktop ? 'accent' : 'outline'} fullWidth>
         Login
       </Button>
     </NavListContainer>
