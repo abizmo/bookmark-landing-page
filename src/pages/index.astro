@@ -1,4 +1,8 @@
 ---
+import IconFacebook from '../assets/icon-facebook.astro'
+import IconTwitter from '../assets/icon-twitter.astro'
+import LogoBookmark from '../assets/logo-bookmark.astro'
+
 import '../styles/global.css'
 ---
 
@@ -10,10 +14,145 @@ import '../styles/global.css'
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400..500&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400..500&display=swap" rel="stylesheet">
 	</head>
 	<body>
-		<h1 class=''>Astro</h1>
+		<header class='primary-header'>
+			<div class='container'>
+				<a href='/'><LogoBookmark /></a>
+				<div>
+					<nav class='primary-navigation'>
+						<ul role="list" class="nav-list">
+							<li><a href="#">Features</a></li>
+							<li><a href="#">Pricing</a></li>
+							<li><a href="#">Contact</a></li>
+						</ul>
+					</nav>
+					<a href="#" class="btn btn--accent">Login</a>
+				</div>
+			</div>
+		</header>
+		<main>
+			<section class="">
+				<div class="container">
+					<div class='even-columns'>
+						<div>
+							<h1>A simple bookmark manager</h1>
+							<p>A clean and simple interface to organize your favourite websites. Open a new browser tab and see your sites load instantly. Try it for free.</p>
+							<a href="#" class="btn btn--primary">Get it on Chrome</a>
+							<a href="#" class="btn btn--neutral">Get it on Firefox</a>
+						</div>
+						<div>
+							<img src="./images/illustration-hero.svg" alt="bookmark screenshot" />
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="">
+				<div class="container">
+					<div class="text-center">
+						<h2>Features</h2>
+						<p>Our aim is to make it quick and easy for you to access your favourite websites. Your bookmarks sync between your devices so you can access them on the go.</p>
+					</div>
+					<!-- TODO: tabs -->
+					<div>
+						<ul>
+							<li><button>Simple bookmarking</button></li>
+							<li><button>Speedy searching</button></li>
+							<li><button>Easy sharing</button></li>
+						</ul>
+						<div class="even-columns">
+							<div><img src="./images/illustration-features-tab-1.svg" alt='tab 1'/></div>
+							<div>
+								<h3>Bookmark in one click</h3>
+								<p>Organize your bookmarks however you like. Our simple drag-and-drop interface gives you complete control over how you manage your favourite sites.</p>
+								<a href='#' class="btn btn--primary">More info</a>
+							</div>
+						</div>
+					</div>
+					<!-- TODO: tabs -->
+				</div>
+			</section>
+			<section class=''>
+				<div class="container">
+					<div class="text-center">
+						<h2>Download the extension</h2>
+						<p>We’ve got more browsers in the pipeline. Please do let us know if you’ve got a favourite you’d like us to prioritize.</p>
+					</div>
+					<!-- TODO: cards -->
+					<div class="cards">
+						<article class='card'>
+							<header class="card__header">
+								<img src="./images/logo-chrome.svg" alt="chrome">
+								<h3>Add to Chrome</h3>
+								<p>Minimum version 62</p>
+							</header>
+							<main class="card__body">
+								<a href='#' class="btn btn--primary">Add & install extension</a>
+							</main>
+						</article>
+						<article class='card'>
+							<header class="card__header">
+								<img src="./images/logo-firefox.svg" alt="firefox">
+								<h3>Add to Firefox</h3>
+								<p>Minimum version 55</p>
+							</header>
+							<main class="card__body">
+								<a href='#' class="btn btn--primary">Add & install extension</a>
+							</main>
+						</article>
+						<article class='card'>
+							<header class="card__header">
+								<img src="./images/logo-opera.svg" alt="opera">
+								<h3>Add to Opera</h3>
+								<p>Minimum version 46</p>
+							</header>
+							<main class="card__body">
+								<a href='#' class="btn btn--primary">Add & install extension</a>
+							</main>
+						</article>
+					</div>
+					<!-- TODO: cards -->
+				</div>
+			</section>
+			<section>
+				<div class="container">
+					<div class="text-center">
+						<h2>Frequently Asked Questions</h2>
+						<p>Here are some of our FAQs. If you have any other questions you´d like answered please feel free to email us.</p>
+					</div>
+					<!-- TODO: FAQs component -->
+				</div>
+			</section>
+			<section class='bg-primary-400 text-neutral-100'>
+				<div class="container">
+					<div class="text-center">
+						<p>35.000+ already joined</p>
+						<h2>Stay up-to-date with what we're doing</h2>
+					</div>
+					<form>
+						<input type="email" name="email" id="email" />
+						<button>Contact us</button>
+					</form>
+				</div>
+			</section>
+		</main>
+		<footer class='primary-footer bg-neutral-900 text-neutral-100'>
+			<a href='/'><LogoBookmark /></a>
+			<nav class='secondary-navigation'>
+				<ul role="list" class="nav-list">
+					<li><a href="#">Features</a></li>
+					<li><a href="#">Pricing</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+			</nav>
+			<nav class='secondary-navigation'>
+				<ul role="list" class="nav-list">
+					<li><a href="#"><IconFacebook /></a></li>
+					<li><a href="#"><IconTwitter /></a></li>
+				</ul>
+			</nav>
+		</footer>
 	</body>
 </html>
