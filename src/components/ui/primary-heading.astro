@@ -1,0 +1,13 @@
+---
+const { class: className, ...props } = Astro.props
+---
+
+<h1
+  class:list={[
+    'text-3xl font-medium leading-tight capitalize text-neutral-900 md:text-5xl md:leading-none',
+    className
+  ]}
+  {...props}
+>
+  <slot />
+</h1>
