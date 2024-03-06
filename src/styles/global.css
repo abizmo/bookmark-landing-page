@@ -1,4 +1,5 @@
 @tailwind base;
+@tailwind utilities;
 
 @layer base {
   :root {
@@ -14,6 +15,12 @@
   }
 
   body {
-    @apply font-sans text-neutral-400;
+    @apply font-sans text-neutral-400 text-sm md:text-lg;
+  }
+}
+
+@layer utilities {
+  .even-columns {
+    @apply grid gap-1 md:grid-flow-col md:auto-cols-fr;
   }
 }
