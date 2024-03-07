@@ -1,0 +1,100 @@
+---
+import LogoBookmark from '../assets/logo-bookmark.astro'
+import Button from '../components/ui/button.astro'
+---
+
+<header class='primary-header mt-10 md:mt-12'>
+  <div class='container'>
+    <div class='flex items-center justify-between'>
+      <a href='/'><LogoBookmark /></a>
+      <button
+        class='mobile-nav-toggle'
+        aria-controls='primary-navigation'
+        aria-expanded='false'
+      >
+        <img
+          class=''
+          src='./images/icon-hamburger.svg'
+          alt=''
+          aria-hidden='true'
+        />
+        <img
+          class='icon-close'
+          src='./images/icon-close.svg'
+          alt=''
+          aria-hidden='true'
+        />
+        <span class='sr-only'>Menu</span>
+      </button>
+      <nav class='primary-navigation'>
+        <ul
+          role='list'
+          class='nav-list'
+          id='primary-navigation'
+          aria-label='primary'
+        >
+          <li><a href='#'>Features</a></li>
+          <li><a href='#'>Pricing</a></li>
+          <li><a href='#'>Contact</a></li>
+        </ul>
+        <Button as='a' href='#' variant='accent' size='wide'>Login</Button>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<style>
+  .mobile-nav-toggle {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .primary-navigation {
+      display: none;
+
+      position: fixed;
+      inset: 6.5rem 1.5rem auto;
+      gap: 1.5rem;
+      text-align: center;
+      text-transform: uppercase;
+
+      @apply bg-neutral-900/90 text-neutral-100 text-xl;
+    }
+
+    .primary-navigation[data-visible] {
+      display: grid;
+    }
+
+    .nav-list {
+      @apply border border-neutral-100/25;
+    }
+
+    .nav-list li {
+      padding: 1.25rem;
+    }
+
+    .nav-list li + li {
+      @apply border-t border-t-neutral-100/25;
+    }
+
+    .mobile-nav-toggle {
+      display: block;
+      padding: 0.5rem;
+    }
+
+    .mobile-nav-toggle .icon-close {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const mobileNavToggle = document.querySelector('.mobile-nav-toggle')
+  const primaryNavigation = document.querySelector('.primary-navigation')
+  mobileNavToggle.addEventListener('click', () => {
+    primaryNavigation.hasAttribute('data-visible')
+      ? mobileNavToggle.setAttribute('aria-expanded', 'false')
+      : mobileNavToggle.setAttribute('aria-expanded', 'true')
+    primaryNavigation.toggleAttribute('data-visible')
+  })
+</script>

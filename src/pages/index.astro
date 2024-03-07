@@ -5,6 +5,7 @@ import LogoBookmark from '../assets/logo-bookmark.astro'
 import PrimaryHeading from '../components/ui/primary-heading.astro'
 import SecondaryHeading from '../components/ui/secondary-heading.astro'
 import Button from '../components/ui/button.astro'
+import Header from '../components/header.astro'
 
 import '../styles/global.css'
 ---
@@ -24,22 +25,8 @@ import '../styles/global.css'
     />
   </head>
   <body>
-    <header class='py-10 md:py-12 primary-header'>
-      <div class='container'>
-        <a href='/'><LogoBookmark /></a>
-        <div>
-          <nav class='primary-navigation'>
-            <ul role='list' class='nav-list'>
-              <li><a href='#'>Features</a></li>
-              <li><a href='#'>Pricing</a></li>
-              <li><a href='#'>Contact</a></li>
-            </ul>
-          </nav>
-          <Button as='a' href='#' variant='accent' size='wide'>Login</Button>
-        </div>
-      </div>
-    </header>
     <main>
+      <Header />
       <section class='py-10 md:py-20'>
         <div class='container'>
           <div class='even-columns'>
