@@ -24,35 +24,22 @@ const buttonVariants = cva(
   }
 )
 
-interface ButtonProps extends HTMLAttributes<'button'> {}
-
-interface LinkProps extends HTMLAttributes<'a'> {}
-
-type UnionProps = ButtonProps | LinkProps
-
-type Props = UnionProps & VariantProps<typeof buttonVariants>
+type Props = (
+  | (HTMLAttributes<'button'> & { as?: 'button' })
+  | (HTMLAttributes<'a'> & { as: 'a' })
+) &
+  VariantProps<typeof buttonVariants>
 
 const {
   class: className,
   variant = 'primary',
   size = 'default',
-  href,
+  as: Comp = 'button',
   ...props
 } = Astro.props
 ---
 
-{
-  href ? (
-    <a
-      href={href}
-      class={cn(buttonVariants({ variant, size, className }))}
-      {...props}
-    >
-      <slot />
-    </a>
-  ) : (
-    <button class={cn(buttonVariants({ variant, size, className }))} {...props}>
-      <slot />
-    </button>
-  )
-}
+<!-- TODO: fix this -->
+<Comp class={cn(buttonVariants({ variant, size, className }))} {...props}>
+  <slot />
+</Comp>
