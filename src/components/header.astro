@@ -13,7 +13,7 @@ import Button from '../components/ui/button.astro'
         aria-expanded='false'
       >
         <img
-          class=''
+          class='icon-hamburger'
           src='./images/icon-hamburger.svg'
           alt=''
           aria-hidden='true'
@@ -23,6 +23,7 @@ import Button from '../components/ui/button.astro'
           src='./images/icon-close.svg'
           alt=''
           aria-hidden='true'
+          hidden
         />
         <span class='sr-only'>Menu</span>
       </button>
@@ -107,10 +108,6 @@ import Button from '../components/ui/button.astro'
       display: block;
       padding: 0.5rem;
     }
-
-    .mobile-nav-toggle .icon-close {
-      display: none;
-    }
   }
 
   @media (min-width: 768px) {
@@ -123,10 +120,27 @@ import Button from '../components/ui/button.astro'
 <script>
   const mobileNavToggle = document.querySelector('.mobile-nav-toggle')
   const primaryNavigation = document.querySelector('.primary-navigation')
-  mobileNavToggle.addEventListener('click', () => {
-    primaryNavigation.hasAttribute('data-visible')
-      ? mobileNavToggle.setAttribute('aria-expanded', 'false')
-      : mobileNavToggle.setAttribute('aria-expanded', 'true')
-    primaryNavigation.toggleAttribute('data-visible')
+  const iconHamburger = document.querySelector('.icon-hamburger')
+  const iconClose = document.querySelector('.icon-close')
+
+  mobileNavToggle?.addEventListener('click', () => {
+    if (primaryNavigation?.hasAttribute('data-visible')) {
+      closeNavigation()
+    } else {
+      openNavigation()
+    }
+    primaryNavigation?.toggleAttribute('data-visible')
   })
+
+  function closeNavigation() {
+    mobileNavToggle?.setAttribute('aria-expanded', 'false')
+    iconHamburger?.removeAttribute('hidden')
+    iconClose?.setAttribute('hidden', 'true')
+  }
+
+  function openNavigation() {
+    mobileNavToggle?.setAttribute('aria-expanded', 'true')
+    iconClose?.removeAttribute('hidden')
+    iconHamburger?.setAttribute('hidden', 'true')
+  }
 </script>
