@@ -3,10 +3,10 @@ import LogoBookmark from '../assets/logo-bookmark.astro'
 import Button from '../components/ui/button.astro'
 ---
 
-<header class='primary-header mt-10 md:mt-12'>
+<header class='primary-header pt-10 md:pt-12'>
   <div class='container'>
     <div class='flex items-center justify-between'>
-      <a href='/'><LogoBookmark /></a>
+      <a href='/'><LogoBookmark id='logo-header' /></a>
       <button
         class='mobile-nav-toggle'
         aria-controls='primary-navigation'
@@ -62,6 +62,9 @@ import Button from '../components/ui/button.astro'
 </header>
 
 <style>
+  .primary-header {
+    @apply text-neutral-900;
+  }
   .mobile-nav-toggle {
     display: none;
   }
@@ -79,8 +82,6 @@ import Button from '../components/ui/button.astro'
       gap: 1.5rem;
       text-align: center;
       text-transform: uppercase;
-
-      @apply bg-neutral-900/90;
     }
 
     .primary-navigation a {
@@ -92,8 +93,14 @@ import Button from '../components/ui/button.astro'
       display: grid;
     }
 
+    .primary-header[data-visible] {
+      position: fixed;
+      inset: 0 0 0;
+      @apply bg-neutral-900/90 text-neutral-100;
+    }
+
     .nav-list {
-      @apply border border-neutral-100/25;
+      @apply border-y border-neutral-100/25;
     }
 
     .nav-list li {
@@ -118,10 +125,12 @@ import Button from '../components/ui/button.astro'
 </style>
 
 <script>
+  const primaryHeader = document.querySelector('.primary-header')
   const mobileNavToggle = document.querySelector('.mobile-nav-toggle')
   const primaryNavigation = document.querySelector('.primary-navigation')
   const iconHamburger = document.querySelector('.icon-hamburger')
   const iconClose = document.querySelector('.icon-close')
+  const logoHeader = document.getElementById('logo-header')
 
   mobileNavToggle?.addEventListener('click', () => {
     if (primaryNavigation?.hasAttribute('data-visible')) {
@@ -130,6 +139,8 @@ import Button from '../components/ui/button.astro'
       openNavigation()
     }
     primaryNavigation?.toggleAttribute('data-visible')
+    primaryHeader?.toggleAttribute('data-visible')
+    logoHeader?.classList.toggle('white')
   })
 
   function closeNavigation() {
