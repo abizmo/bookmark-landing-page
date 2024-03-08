@@ -37,8 +37,24 @@ import Button from '../components/ui/button.astro'
           <li><a href='#'>Pricing</a></li>
           <li><a href='#'>Contact</a></li>
         </ul>
-        <Button as='a' href='#' variant='accent' size='wide' class='font-inherit desktop-login-button'>Login</Button>
-        <Button as='a' href='#' variant='outline' size='wide' class='font-inherit mobile-login-button'>Login</Button>
+        <Button
+          as='a'
+          href='#'
+          variant='accent'
+          size='wide'
+          class='font-inherit desktop-login-button'
+        >
+          Login
+        </Button>
+        <Button
+          as='a'
+          href='#'
+          variant='outline'
+          size='wide'
+          class='font-inherit mobile-login-button'
+        >
+          Login
+        </Button>
       </nav>
     </div>
   </div>
@@ -63,7 +79,12 @@ import Button from '../components/ui/button.astro'
       text-align: center;
       text-transform: uppercase;
 
-      @apply bg-neutral-900/90 text-neutral-100 text-xl;
+      @apply bg-neutral-900/90;
+    }
+
+    .primary-navigation a {
+      outline: none;
+      @apply text-neutral-100 text-xl hover:text-accent-400 focus:text-accent-400;
     }
 
     .primary-navigation[data-visible] {
