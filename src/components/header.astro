@@ -37,7 +37,8 @@ import Button from '../components/ui/button.astro'
           <li><a href='#'>Pricing</a></li>
           <li><a href='#'>Contact</a></li>
         </ul>
-        <Button as='a' href='#' variant='accent' size='wide'>Login</Button>
+        <Button as='a' href='#' variant='accent' size='wide' class='font-inherit desktop-login-button'>Login</Button>
+        <Button as='a' href='#' variant='outline' size='wide' class='font-inherit mobile-login-button'>Login</Button>
       </nav>
     </div>
   </div>
@@ -49,6 +50,10 @@ import Button from '../components/ui/button.astro'
   }
 
   @media (max-width: 768px) {
+    .desktop-login-button {
+      display: none;
+    }
+
     .primary-navigation {
       display: none;
 
@@ -83,6 +88,12 @@ import Button from '../components/ui/button.astro'
     }
 
     .mobile-nav-toggle .icon-close {
+      display: none;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .mobile-login-button {
       display: none;
     }
   }
