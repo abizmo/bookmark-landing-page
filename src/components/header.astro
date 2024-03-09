@@ -1,4 +1,6 @@
 ---
+import IconFacebook from '../assets/icon-facebook.astro'
+import IconTwitter from '../assets/icon-twitter.astro'
 import LogoBookmark from '../assets/logo-bookmark.astro'
 import Button from '../components/ui/button.astro'
 ---
@@ -57,16 +59,28 @@ import Button from '../components/ui/button.astro'
           Login
         </Button>
       </nav>
+      <nav class='social-navigation'>
+        <a href='#'><IconFacebook /></a>
+        <a href='#'><IconTwitter /></a>
+      </nav>
     </div>
   </div>
 </header>
 
 <style>
   .primary-header {
+    position: absolute;
+    inset: 0 0 auto;
     @apply text-neutral-900;
   }
-  .mobile-nav-toggle {
+
+  .mobile-nav-toggle,
+  .social-navigation {
     display: none;
+  }
+
+  .social-navigation a {
+    @apply hover:text-accent-400 focus:text-accent-400;
   }
 
   @media (max-width: 768px) {
@@ -78,8 +92,8 @@ import Button from '../components/ui/button.astro'
       display: none;
 
       position: fixed;
-      inset: 6.5rem 1.5rem auto;
-      gap: 1.5rem;
+      inset: 8rem 1.5rem auto;
+      gap: 2rem;
       text-align: center;
       text-transform: uppercase;
     }
@@ -97,6 +111,15 @@ import Button from '../components/ui/button.astro'
       position: fixed;
       inset: 0 0 0;
       @apply bg-neutral-900/90 text-neutral-100;
+    }
+
+    .primary-header[data-visible] .social-navigation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      position: absolute;
+      inset: auto 0 2.5rem;
     }
 
     .nav-list {
