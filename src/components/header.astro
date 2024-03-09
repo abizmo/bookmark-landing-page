@@ -140,9 +140,21 @@ import Button from '../components/ui/button.astro'
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     .mobile-login-button {
       display: none;
+    }
+
+    .primary-navigation {
+      display: flex;
+      gap: 3rem;
+      text-transform: uppercase;
+      font-size: 0.8125rem;
+      align-items: center;
+    }
+    .nav-list {
+      display: flex;
+      gap: 3rem;
     }
   }
 </style>
