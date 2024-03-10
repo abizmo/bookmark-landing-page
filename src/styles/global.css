@@ -23,4 +23,8 @@
   .even-columns {
     @apply grid gap-1 md:grid-flow-col md:auto-cols-fr;
   }
+
+  .font-inherit {
+    font: inherit;
+  }
 }
