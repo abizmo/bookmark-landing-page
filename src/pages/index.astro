@@ -29,26 +29,24 @@ import '../styles/global.css'
     <main class='mt-36'>
       <section class='md:py-20'>
         <div class='container'>
-          <div class='even-columns'>
-            <div class='text-center md:text-left'>
+          <div class='even-columns gap-12 items-center'>
+            <div class='text-center md:text-left order-2 md:order-1 max-w-lg'>
               <PrimaryHeading class='mb-4'>
                 A simple bookmark manager
               </PrimaryHeading>
-              <p class='mb-8 text-pretty'>
+              <p class='mb-8'>
                 A clean and simple interface to organize your favourite
                 websites. Open a new browser tab and see your sites load
                 instantly. Try it for free.
               </p>
-              <div class='flex gap-3'>
-                <Button as='a' href='#' size='fullWidth'>
-                  Get it on Chrome
-                </Button>
-                <Button as='a' href='#' variant='neutral' size='fullWidth'>
+              <div class='flex md:block'>
+                <Button as='a' href='#' class='mr-3'>Get it on Chrome</Button>
+                <Button as='a' href='#' variant='neutral'>
                   Get it on Firefox
                 </Button>
               </div>
             </div>
-            <div>
+            <div class='order-1 md:order-2'>
               <img
                 src='./images/illustration-hero.svg'
                 alt='bookmark screenshot'
