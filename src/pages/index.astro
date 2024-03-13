@@ -6,8 +6,30 @@ import PrimaryHeading from '../components/ui/primary-heading.astro'
 import SecondaryHeading from '../components/ui/secondary-heading.astro'
 import Button from '../components/ui/button.astro'
 import Header from '../components/header.astro'
+import Card from '../components/card.astro'
 
 import '../styles/global.css'
+
+const browsers = [
+  {
+    logo: '/images/logo-chrome.svg',
+    browser: 'Chrome',
+    version: '62',
+    href: '#'
+  },
+  {
+    logo: '/images/logo-firefox.svg',
+    browser: 'Firefox',
+    version: '55',
+    href: '#'
+  },
+  {
+    logo: '/images/logo-opera.svg',
+    browser: 'Opera',
+    version: '46',
+    href: '#'
+  }
+]
 ---
 
 <html lang='en'>
@@ -155,53 +177,22 @@ import '../styles/global.css'
     </main>
     <section class='py-16 md:py-20'>
       <div class='container'>
-        <div class='text-center'>
-          <SecondaryHeading class='text-neutral-900'>
+        <div class='text-center mb-8 md:mb-14'>
+          <SecondaryHeading class='text-neutral-900 mb-4'>
             Download the extension
           </SecondaryHeading>
-          <p>
+          <p class='text-balance md:max-w-prose md:mx-auto'>
             We’ve got more browsers in the pipeline. Please do let us know if
             you’ve got a favourite you’d like us to prioritize.
           </p>
         </div>
         <!-- TODO: cards -->
-        <div class='cards'>
-          <article class='card'>
-            <header class='card__header'>
-              <img src='./images/logo-chrome.svg' alt='chrome' />
-              <h4>Add to Chrome</h4>
-              <p>Minimum version 62</p>
-            </header>
-            <main class='card__body'>
-              <Button as='a' href='#' class='capitalize'>
-                Add & install extension
-              </Button>
-            </main>
-          </article>
-          <article class='card'>
-            <header class='card__header'>
-              <img src='./images/logo-firefox.svg' alt='firefox' />
-              <h4>Add to Firefox</h4>
-              <p>Minimum version 55</p>
-            </header>
-            <main class='card__body'>
-              <Button as='a' href='#' class='capitalize'>
-                Add & install extension
-              </Button>
-            </main>
-          </article>
-          <article class='card'>
-            <header class='card__header'>
-              <img src='./images/logo-opera.svg' alt='opera' />
-              <h4>Add to Opera</h4>
-              <p>Minimum version 46</p>
-            </header>
-            <main class='card__body'>
-              <Button as='a' href='#' class='capitalize'>
-                Add & install extension
-              </Button>
-            </main>
-          </article>
+        <div class='even-columns gap-10 cards'>
+          {
+            browsers.map((browser) => (
+              <Card {...browser} class='even:mt-10 last:mt-20' />
+            ))
+          }
         </div>
         <!-- TODO: cards -->
       </div>
@@ -255,3 +246,14 @@ import '../styles/global.css'
     </div>
   </footer>
 </html>
+
+<style>
+  @media (min-width: 768px) {
+    .cards {
+      align-items: start;
+      justify-items: center;
+      justify-content: center;
+      grid-auto-columns: initial;
+    }
+  }
+</style>
