@@ -1,17 +1,18 @@
 ---
+import type { HTMLAttributes } from 'astro/types'
 import Button from './ui/button.astro'
 
-interface Props {
+interface Props extends HTMLAttributes<'article'> {
   logo: string
   browser: string
   version: string
   href: string
 }
 
-const {logo, browser, version, href} = Astro.props
+const {logo, browser, version, href, class: className, ...props} = Astro.props
 ---
 
-<article class='shadow-lg rounded-lg'>
+<article class:list={['shadow-lg rounded-lg', className]} {...props}>
   <header class='py-10 text-center'>
     <img class='inline-block mb-9' src={logo} alt={browser} />
     <h4 class='mb-4 | card__title'>Add to {browser}</h4>

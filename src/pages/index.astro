@@ -177,18 +177,22 @@ const browsers = [
     </main>
     <section class='py-16 md:py-20'>
       <div class='container'>
-        <div class='text-center mb-8'>
+        <div class='text-center mb-8 md:mb-14'>
           <SecondaryHeading class='text-neutral-900 mb-4'>
             Download the extension
           </SecondaryHeading>
-          <p class='text-balance'>
+          <p class='text-balance md:max-w-prose md:mx-auto'>
             We’ve got more browsers in the pipeline. Please do let us know if
             you’ve got a favourite you’d like us to prioritize.
           </p>
         </div>
         <!-- TODO: cards -->
-        <div class='grid gap-10 cards'>
-          {browsers.map((browser) => <Card {...browser} />)}
+        <div class='even-columns gap-10 cards'>
+          {
+            browsers.map((browser) => (
+              <Card {...browser} class='even:mt-10 last:mt-20' />
+            ))
+          }
         </div>
         <!-- TODO: cards -->
       </div>
@@ -242,3 +246,14 @@ const browsers = [
     </div>
   </footer>
 </html>
+
+<style>
+  @media (min-width: 768px) {
+    .cards {
+      align-items: start;
+      justify-items: center;
+      justify-content: center;
+      grid-auto-columns: initial;
+    }
+  }
+</style>
