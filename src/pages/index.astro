@@ -1,9 +1,7 @@
 ---
-import IconFacebook from '../assets/icon-facebook.astro'
-import IconTwitter from '../assets/icon-twitter.astro'
-import LogoBookmark from '../assets/logo-bookmark.astro'
 import DownloadExtension from '../components/download-extension.astro'
 import Hero from '../components/hero.astro'
+import Footer from '../components/footer.astro'
 import Header from '../components/header.astro'
 import Button from '../components/ui/button.astro'
 import SecondaryHeading from '../components/ui/secondary-heading.astro'
@@ -166,22 +164,5 @@ import '../styles/global.css'
       </div>
     </section>
   </body>
-  <footer class='py-10 primary-footer bg-neutral-900 text-neutral-100'>
-    <div class='container'>
-      <a href='/'><LogoBookmark /></a>
-      <nav class='secondary-navigation'>
-        <ul role='list' class='nav-list'>
-          <li><a href='#'>Features</a></li>
-          <li><a href='#'>Pricing</a></li>
-          <li><a href='#'>Contact</a></li>
-        </ul>
-      </nav>
-      <nav class='secondary-navigation'>
-        <ul role='list' class='nav-list'>
-          <li><a href='#'><IconFacebook /></a></li>
-          <li><a href='#'><IconTwitter /></a></li>
-        </ul>
-      </nav>
-    </div>
-  </footer>
+  <Footer />
 </html>
