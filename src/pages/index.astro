@@ -2,34 +2,13 @@
 import IconFacebook from '../assets/icon-facebook.astro'
 import IconTwitter from '../assets/icon-twitter.astro'
 import LogoBookmark from '../assets/logo-bookmark.astro'
-import PrimaryHeading from '../components/ui/primary-heading.astro'
-import SecondaryHeading from '../components/ui/secondary-heading.astro'
-import Button from '../components/ui/button.astro'
+import DownloadExtension from '../components/download-extension.astro'
+import Hero from '../components/hero.astro'
 import Header from '../components/header.astro'
-import Card from '../components/card.astro'
+import Button from '../components/ui/button.astro'
+import SecondaryHeading from '../components/ui/secondary-heading.astro'
 
 import '../styles/global.css'
-
-const browsers = [
-  {
-    logo: '/images/logo-chrome.svg',
-    browser: 'Chrome',
-    version: '62',
-    href: '#'
-  },
-  {
-    logo: '/images/logo-firefox.svg',
-    browser: 'Firefox',
-    version: '55',
-    href: '#'
-  },
-  {
-    logo: '/images/logo-opera.svg',
-    browser: 'Opera',
-    version: '46',
-    href: '#'
-  }
-]
 ---
 
 <html lang='en'>
@@ -51,30 +30,7 @@ const browsers = [
     <main class='mt-36'>
       <section class='md:py-20'>
         <div class='container'>
-          <div class='even-columns gap-12 items-center'>
-            <div class='text-center md:text-left order-2 md:order-1 max-w-lg'>
-              <PrimaryHeading class='mb-4'>
-                A simple bookmark manager
-              </PrimaryHeading>
-              <p class='mb-8'>
-                A clean and simple interface to organize your favourite
-                websites. Open a new browser tab and see your sites load
-                instantly. Try it for free.
-              </p>
-              <div class='flex md:block'>
-                <Button as='a' href='#' class='mr-3'>Get it on Chrome</Button>
-                <Button as='a' href='#' variant='neutral'>
-                  Get it on Firefox
-                </Button>
-              </div>
-            </div>
-            <div class='order-1 md:order-2'>
-              <img
-                src='./images/illustration-hero.svg'
-                alt='bookmark screenshot'
-              />
-            </div>
-          </div>
+          <Hero />
         </div>
       </section>
       <section class='py-16 md:py-20'>
@@ -177,22 +133,7 @@ const browsers = [
     </main>
     <section class='py-16 md:py-20'>
       <div class='container'>
-        <div class='text-center mb-8 md:mb-14'>
-          <SecondaryHeading class='text-neutral-900 mb-4'>
-            Download the extension
-          </SecondaryHeading>
-          <p class='text-balance md:max-w-prose md:mx-auto'>
-            We’ve got more browsers in the pipeline. Please do let us know if
-            you’ve got a favourite you’d like us to prioritize.
-          </p>
-        </div>
-        <div class='even-columns gap-10 cards'>
-          {
-            browsers.map((browser) => (
-              <Card {...browser} class='even:mt-10 last:mt-20' />
-            ))
-          }
-        </div>
+        <DownloadExtension />
       </div>
     </section>
     <section class='py-16 mb-12 md:py-20 md:mb-16'>
@@ -244,14 +185,3 @@ const browsers = [
     </div>
   </footer>
 </html>
-
-<style>
-  @media (min-width: 768px) {
-    .cards {
-      align-items: start;
-      justify-items: center;
-      justify-content: center;
-      grid-auto-columns: initial;
-    }
-  }
-</style>

@@ -1,0 +1,53 @@
+---
+import Card from './card.astro'
+import SecondaryHeading from './ui/secondary-heading.astro'
+
+const browsers = [
+  {
+    logo: '/images/logo-chrome.svg',
+    browser: 'Chrome',
+    version: '62',
+    href: '#'
+  },
+  {
+    logo: '/images/logo-firefox.svg',
+    browser: 'Firefox',
+    version: '55',
+    href: '#'
+  },
+  {
+    logo: '/images/logo-opera.svg',
+    browser: 'Opera',
+    version: '46',
+    href: '#'
+  }
+]
+---
+
+<div class='text-center mb-8 md:mb-14'>
+  <SecondaryHeading class='text-neutral-900 mb-4'>
+    Download the extension
+  </SecondaryHeading>
+  <p class='text-balance md:max-w-prose md:mx-auto'>
+    We’ve got more browsers in the pipeline. Please do let us know if you’ve got
+    a favourite you’d like us to prioritize.
+  </p>
+</div>
+<div class='even-columns gap-10 cards'>
+  {
+    browsers.map((browser) => (
+      <Card {...browser} class='even:mt-10 last:mt-20' />
+    ))
+  }
+</div>
+
+<style>
+  @media (min-width: 768px) {
+    .cards {
+      align-items: start;
+      justify-items: center;
+      justify-content: center;
+      grid-auto-columns: initial;
+    }
+  }
+</style>
