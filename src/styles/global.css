@@ -15,13 +15,13 @@
   }
 
   body {
-    @apply font-sans text-neutral-400 text-sm md:text-lg;
+    @apply font-sans text-neutral-400 text-sm md:text-lg leading-relaxed;
   }
 }
 
 @layer utilities {
   .even-columns {
-    @apply grid gap-1 md:grid-flow-col md:auto-cols-fr;
+    @apply grid md:grid-flow-col md:auto-cols-fr;
   }
 
   .font-inherit {
