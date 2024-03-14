@@ -6,19 +6,23 @@ import LogoBookmark from '../assets/logo-bookmark.astro'
 
 <footer class='py-10 primary-footer bg-neutral-900 text-neutral-100'>
   <div class='container'>
-    <a href='/'><LogoBookmark /></a>
-    <nav class='secondary-navigation'>
-      <ul role='list' class='nav-list'>
-        <li><a href='#'>Features</a></li>
-        <li><a href='#'>Pricing</a></li>
-        <li><a href='#'>Contact</a></li>
-      </ul>
-    </nav>
-    <nav class='secondary-navigation'>
-      <ul role='list' class='nav-list'>
-        <li><a href='#'><IconFacebook /></a></li>
-        <li><a href='#'><IconTwitter /></a></li>
-      </ul>
-    </nav>
+    <div class='even-columns justify-items-center gap-10'>
+      <div class='even-columns justify-items-center gap-10'>
+        <a href='/'><LogoBookmark /></a>
+        <nav class='secondary-navigation'>
+          <ul role='list' class='nav-list'>
+            <li><a href='#'>Features</a></li>
+            <li><a href='#'>Pricing</a></li>
+            <li><a href='#'>Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <nav class='secondary-navigation'>
+        <ul role='list' class='nav-list'>
+          <li><a href='#'><IconFacebook /></a></li>
+          <li><a href='#'><IconTwitter /></a></li>
+        </ul>
+      </nav>
+    </div>
   </div>
 </footer>
