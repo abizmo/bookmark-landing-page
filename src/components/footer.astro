@@ -6,18 +6,20 @@ import LogoBookmark from '../assets/logo-bookmark.astro'
 
 <footer class='py-10 primary-footer bg-neutral-900 text-neutral-100'>
   <div class='container'>
-    <div class='even-columns justify-items-center gap-10'>
-      <div class='even-columns justify-items-center gap-10'>
+    <div
+      class='grid justify-items-center gap-10 md:flex md:items-center md:justify-between'
+    >
+      <div class='grid gap-10 md:flex md:gap-14 md:items-center'>
         <a href='/'><LogoBookmark /></a>
-        <nav class='secondary-navigation'>
-          <ul role='list' class='nav-list'>
+        <nav class='footer-navigation'>
+          <ul role='list' class='grid md:flex'>
             <li><a href='#'>Features</a></li>
             <li><a href='#'>Pricing</a></li>
             <li><a href='#'>Contact</a></li>
           </ul>
         </nav>
       </div>
-      <nav class='secondary-navigation'>
+      <nav class='social-navigation'>
         <ul role='list' class='nav-list'>
           <li><a href='#'><IconFacebook /></a></li>
           <li><a href='#'><IconTwitter /></a></li>
@@ -26,3 +28,20 @@ import LogoBookmark from '../assets/logo-bookmark.astro'
     </div>
   </div>
 </footer>
+
+<style>
+  .footer-navigation ul {
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .social-navigation ul {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  a:hover {
+    color: hsl(var(--clr-accent-400));
+  }
+</style>
