@@ -3,11 +3,25 @@ import { Button } from './ui/button'
 import SecondaryHeading from './ui/secondary-heading.astro'
 ---
 
-<div class='text-center'>
-  <p>35.000+ already joined</p>
+<div class='mb-8 text-center | cta__header'>
+  <p class='mb-2 md:mb-9 | cta__text'>35.000+ already joined</p>
   <SecondaryHeading> Stay up-to-date with what we're doing </SecondaryHeading>
 </div>
 <form>
   <input type='email' name='email' id='email' />
   <Button variant='accent' className='capitalize'>Contact us</Button>
 </form>
+
+<style>
+  .cta__header {
+    max-width: 40ch;
+    margin-inline: auto;
+  }
+
+  .cta__text {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.35em;
+  }
+</style>
