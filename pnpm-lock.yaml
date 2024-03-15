@@ -29,6 +29,9 @@ dependencies:
   clsx:
     specifier: ^2.1.0
     version: 2.1.0
+  lucide-react:
+    specifier: ^0.358.0
+    version: 0.358.0(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -41,6 +44,9 @@ dependencies:
   tailwindcss:
     specifier: ^3.4.1
     version: 3.4.1
+  tailwindcss-animate:
+    specifier: ^1.0.7
+    version: 1.0.7(tailwindcss@3.4.1)
   typescript:
     specifier: ^5.3.3
     version: 5.3.3
@@ -2312,6 +2318,14 @@ packages:
       yallist: 4.0.0
     dev: false
 
+  /lucide-react@0.358.0(react@18.2.0):
+    resolution: {integrity: sha512-rBSptRjZTMBm24zsFhR6pK/NgbT18JegZGKcH4+1H3+UigMSRpeoWLtR/fAwMYwYnlJOZB+y8WpeHne9D6X6Kg==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /magic-string@0.30.7:
     resolution: {integrity: sha512-8vBuFF/I/+OSLRmdf2wwFCJCz+nSn0m6DPvGH1fS/KiQoSaR+sETbov0eIk9KhEKy8CYqIkIAnbohxT/4H0kuA==}
     engines: {node: '>=12'}
@@ -3656,6 +3670,14 @@ packages:
     resolution: {integrity: sha512-o+2GTLkthfa5YUt4JxPfzMIpQzZ3adD1vLVkvKE1Twl9UAhGsEbIZhHHZVRttyW177S8PDJI3bTQNaebyofK3Q==}
     dependencies:
       '@babel/runtime': 7.24.0
+    dev: false
+
+  /tailwindcss-animate@1.0.7(tailwindcss@3.4.1):
+    resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || insiders'
+    dependencies:
+      tailwindcss: 3.4.1
     dev: false
 
   /tailwindcss@3.4.1:
