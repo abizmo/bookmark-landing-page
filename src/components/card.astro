@@ -1,6 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
-import Button from './ui/button.astro'
+
+import { buttonVariants } from './ui/button'
 
 interface Props extends HTMLAttributes<'article'> {
   logo: string
@@ -19,9 +20,9 @@ const {logo, browser, version, href, class: className, ...props} = Astro.props
     <p>Minimum version {version}</p>
   </header>
   <main class='text-center | card__body'>
-    <Button as='a' href={href} class='capitalize'>
+    <a class:list={['capitalize', buttonVariants()]}>
       Add & install extension
-    </Button>
+    </a>
   </main>
 </article>
 

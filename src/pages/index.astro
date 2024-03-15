@@ -3,7 +3,7 @@ import DownloadExtension from '@/components/download-extension.astro'
 import Hero from '@/components/hero.astro'
 import Footer from '@/components/footer.astro'
 import Header from '@/components/header.astro'
-import Button from '@/components/ui/button.astro'
+import {  Button, buttonVariants } from '@/components/ui/button'
 import SecondaryHeading from '@/components/ui/secondary-heading.astro'
 
 import '@/styles/global.css'
@@ -82,7 +82,7 @@ import '@/styles/global.css'
                 drag-and-drop interface gives you complete control over how you
                 manage your favourite sites.
               </p>
-              <Button as='a' href='#'>More Info</Button>
+              <a class={buttonVariants()}>More Info</a>
             </div>
           </article>
           <article
@@ -102,7 +102,7 @@ import '@/styles/global.css'
                 Our powerful search feature will help you find saved sites in no
                 time at all. No need to trawl through all of your bookmarks.
               </p>
-              <Button as='a' href='#'>More Info</Button>
+              <a class={buttonVariants()}>More Info</a>
             </div>
           </article>
           <article
@@ -122,7 +122,7 @@ import '@/styles/global.css'
                 Easily share your bookmarks and collections with others. Create
                 a shareable link that you can send at the click of a button.
               </p>
-              <Button as='a' href='#'>More Info</Button>
+              <a class={buttonVariants()}>More Info</a>
             </div>
           </article>
           <!-- TODO: tabs -->
@@ -146,7 +146,7 @@ import '@/styles/global.css'
           </p>
         </div>
         <!-- TODO: FAQs component -->
-        <Button as='a' href='#'>More Info</Button>
+        <a class={buttonVariants()}>More Info</a>
       </div>
     </section>
     <section class='py-16 bg-primary-400 text-neutral-100'>
@@ -159,7 +159,7 @@ import '@/styles/global.css'
         </div>
         <form>
           <input type='email' name='email' id='email' />
-          <Button variant='accent' class='capitalize'>Contact us</Button>
+          <Button variant='accent' className='capitalize'>Contact us</Button>
         </form>
       </div>
     </section>
