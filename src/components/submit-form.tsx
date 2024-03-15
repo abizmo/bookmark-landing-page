@@ -11,7 +11,7 @@ import { FormControl, FormField, FormItem, FormMessage } from './ui/form'
 const formSchema = z.object({
   email: z
     .string({ required_error: 'Email is required' })
-    .email({ message: 'Invalid email' })
+    .email({ message: "Whoops, make sure it's an email" })
 })
 
 type FormData = z.infer<typeof formSchema>
@@ -28,6 +28,8 @@ const SubmitForm = () => {
     console.log(data)
   }
 
+  const { errors } = form.formState
+
   return (
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -35,7 +37,7 @@ const SubmitForm = () => {
           control={form.control}
           name='email'
           render={({ field }) => (
-            <FormItem>
+            <FormItem error={!!errors.email}>
               <FormControl>
                 <Input placeholder='Enter your email address' {...field} />
               </FormControl>

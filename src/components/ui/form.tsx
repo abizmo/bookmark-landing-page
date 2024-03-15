@@ -72,13 +72,25 @@ const FormItemContext = React.createContext<FormItemContextValue>(
 
 const FormItem = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
+  React.HTMLAttributes<HTMLDivElement> & { error?: boolean }
+>(({ error = false, className, ...props }, ref) => {
   const id = React.useId()
 
   return (
     <FormItemContext.Provider value={{ id }}>
-      <div ref={ref} className={cn('space-y-2', className)} {...props} />
+      <div
+        ref={ref}
+        className={cn(
+          'relative',
+          {
+            'bg-accent-400 pt-[2px] px-[2px] pb-2 rounded-md space-y-2': error,
+            "after:content-[''] after:absolute after:top-4 after:right-4 after:h-5 after:w-5  after:bg-[url('/images/icon-error.svg')]":
+              error
+          },
+          className
+        )}
+        {...props}
+      />
     </FormItemContext.Provider>
   )
 })
