@@ -32,12 +32,15 @@ const SubmitForm = () => {
 
   return (
     <FormProvider {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form
+        className='grid gap-4 md:flex md:w-[450px] md:items-start md:mx-auto'
+        onSubmit={form.handleSubmit(onSubmit)}
+      >
         <FormField
           control={form.control}
           name='email'
           render={({ field }) => (
-            <FormItem error={!!errors.email}>
+            <FormItem error={!!errors.email} className='md:flex-1'>
               <FormControl>
                 <Input placeholder='Enter your email address' {...field} />
               </FormControl>
