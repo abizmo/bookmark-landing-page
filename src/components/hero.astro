@@ -1,6 +1,6 @@
 ---
-import Button from '../components/ui/button.astro'
-import PrimaryHeading from '../components/ui/primary-heading.astro'
+import { buttonVariants } from '@/components/ui/button'
+import PrimaryHeading from '@/components/ui/primary-heading.astro'
 ---
 
 <div class='even-columns gap-12 items-center'>
@@ -11,8 +11,12 @@ import PrimaryHeading from '../components/ui/primary-heading.astro'
       new browser tab and see your sites load instantly. Try it for free.
     </p>
     <div class='flex md:block'>
-      <Button as='a' href='#' class='mr-3'>Get it on Chrome</Button>
-      <Button as='a' href='#' variant='neutral'> Get it on Firefox </Button>
+      <a href='#' class:list={['mr-3', buttonVariants()]}>
+        Get it on Chrome
+      </a>
+      <a href='#' class={buttonVariants({variant: 'neutral'})}>
+        Get it on Firefox
+      </a>
     </div>
   </div>
   <div class='order-1 md:order-2'>

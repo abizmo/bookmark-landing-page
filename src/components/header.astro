@@ -1,8 +1,8 @@
 ---
-import IconFacebook from '../assets/icon-facebook.astro'
-import IconTwitter from '../assets/icon-twitter.astro'
-import LogoBookmark from '../assets/logo-bookmark.astro'
-import Button from '../components/ui/button.astro'
+import IconFacebook from '@/assets/icon-facebook.astro'
+import IconTwitter from '@/assets/icon-twitter.astro'
+import LogoBookmark from '@/assets/logo-bookmark.astro'
+import { buttonVariants } from '@/components/ui/button'
 ---
 
 <header class='primary-header pt-10 md:pt-12'>
@@ -40,24 +40,12 @@ import Button from '../components/ui/button.astro'
           <li><a href='#'>Pricing</a></li>
           <li><a href='#'>Contact</a></li>
         </ul>
-        <Button
-          as='a'
-          href='#'
-          variant='accent'
-          size='wide'
-          class='font-inherit desktop-login-button'
-        >
+        <a href='#' class:list={['font-inherit desktop-login-button', buttonVariants({variant: 'accent', size: 'wide'})]}>
           Login
-        </Button>
-        <Button
-          as='a'
-          href='#'
-          variant='outline'
-          size='wide'
-          class='font-inherit mobile-login-button'
-        >
+        </a>
+        <a href='#' class:list={['font-inherit mobile-login-button', buttonVariants({variant: 'outline', size: 'wide'})]}>
           Login
-        </Button>
+        </a>
       </nav>
       <nav class='social-navigation'>
         <a href='#'><IconFacebook /></a>
