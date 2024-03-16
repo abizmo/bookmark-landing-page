@@ -1,0 +1,81 @@
+---
+import SecondaryHeading from './ui/secondary-heading.astro'
+import { buttonVariants } from './ui/button'
+---
+
+<div class='text-center'>
+  <SecondaryHeading class='text-neutral-900'> Features </SecondaryHeading>
+  <p>
+    Our aim is to make it quick and easy for you to access your favourite
+    websites. Your bookmarks sync between your devices so you can access them on
+    the go.
+  </p>
+</div>
+<!-- TODO: tabs -->
+<div role='tablist' aria-label='features list'>
+  <button
+    aria-selected='false'
+    role='tab'
+    aria-controls='simple-tab'
+    tabindex='0'>Simple bookmarking</button
+  >
+  <button
+    aria-selected='false'
+    role='tab'
+    aria-controls='speedy-tab'
+    tabindex='-1'>Speedy searching</button
+  >
+  <button
+    aria-selected='false'
+    role='tab'
+    aria-controls='easy-tab'
+    tabindex='-1'>Easy sharing</button
+  >
+</div>
+<article class='even-columns' id='simple-tab' tabindex='0' role='tabpanel'>
+  <div>
+    <img src='./images/illustration-features-tab-1.svg' alt='tab 1' />
+  </div>
+  <div>
+    <SecondaryHeading tag='h3' class='text-neutral-900'>
+      Bookmark in one click
+    </SecondaryHeading>
+    <p>
+      Organize your bookmarks however you like. Our simple drag-and-drop
+      interface gives you complete control over how you manage your favourite
+      sites.
+    </p>
+    <a href='#' class={buttonVariants()}>More Info</a>
+  </div>
+</article>
+<article class='even-columns' id='speedy-tab' tabindex='0' role='tabpanel'>
+  <div>
+    <img src='./images/illustration-features-tab-2.svg' alt='tab 2' />
+  </div>
+  <div>
+    <SecondaryHeading tag='h3' class='text-neutral-900'>
+      Intelligent search
+    </SecondaryHeading>
+    <p>
+      Our powerful search feature will help you find saved sites in no time at
+      all. No need to trawl through all of your bookmarks.
+    </p>
+    <a href='#' class={buttonVariants()}>More Info</a>
+  </div>
+</article>
+<article class='even-columns' id='easy-tab' tabindex='0' role='tabpanel'>
+  <div>
+    <img src='./images/illustration-features-tab-3.svg' alt='tab 3' />
+  </div>
+  <div>
+    <SecondaryHeading tag='h3' class='text-neutral-900'>
+      Share your bookmarks
+    </SecondaryHeading>
+    <p>
+      Easily share your bookmarks and collections with others. Create a
+      shareable link that you can send at the click of a button.
+    </p>
+    <a href='#' class={buttonVariants()}>More Info</a>
+  </div>
+</article>
+<!-- TODO: tabs -->
