@@ -1,72 +1,63 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs'
 import { buttonVariants } from './ui/button'
+import SecondaryHeading from './ui/secondary-heading.astro'
+
+const features = [
+  {
+    id: 'bookmark',
+    name: 'Simple bookmarking',
+    img: './images/illustration-features-tab-1.svg',
+    title: 'Bookmark in one click',
+    description:
+      'Organize your bookmarks however you like. Our simple drag-and-drop interface gives you complete control over how you manage your favourite sites.',
+    href: '#'
+  },
+  {
+    id: 'search',
+    name: 'Speedy searching',
+    img: './images/illustration-features-tab-2.svg',
+    title: 'Intelligent search',
+    description:
+      'Our powerful search feature will help you find saved sites in no time at all. No need to trawl through all of your bookmarks.',
+    href: '#'
+  },
+  {
+    id: 'share',
+    name: 'Easy sharing',
+    img: './images/illustration-features-tab-3.svg',
+    title: 'Share your bookmarks',
+    description:
+      'Easily share your bookmarks and collections with others. Create a shareable link that you can send at the click of a button.',
+    href: '#'
+  }
+]
 
 const FeaturesTab = () => {
   return (
-    <Tabs defaultValue='bookmark' className='w-[400px]'>
+    <Tabs defaultValue={features[0].id} className='border border-red-400'>
       <TabsList>
-        <TabsTrigger value='bookmark'>Simple bookmarking</TabsTrigger>
-        <TabsTrigger value='search'>Speedy searching</TabsTrigger>
-        <TabsTrigger value='share'>Easy sharing</TabsTrigger>
+        {features.map((f) => (
+          <TabsTrigger key={f.id} value={f.id}>
+            {f.name}
+          </TabsTrigger>
+        ))}
       </TabsList>
-      <TabsContent value='bookmark'>
-        <div>
-          <img
-            src='./images/illustration-features-tab-1.svg'
-            alt='simple bookmarking'
-          />
-        </div>
-        <div>
-          {/* <SecondaryHeading tag='h3' class='text-neutral-900'> */}
-          Bookmark in one click
-          {/* </SecondaryHeading> */}
-          <p>
-            Organize your bookmarks however you like. Our simple drag-and-drop
-            interface gives you complete control over how you manage your
-            favourite sites.
-          </p>
-          <a href='#' className={buttonVariants()}>
-            More Info
-          </a>
-        </div>
-      </TabsContent>
-      <TabsContent value='search'>
-        <div>
-          <img
-            src='./images/illustration-features-tab-2.svg'
-            alt='speedy searching'
-          />
-        </div>
-        <div>
-          {/* <SecondaryHeading tag='h3' class='text-neutral-900'> */}
-          Intelligent search
-          {/* </SecondaryHeading> */}
-          <p>
-            Our powerful search feature will help you find saved sites in no
-            time at all. No need to trawl through all of your bookmarks.
-          </p>
-          <a href='#' className={buttonVariants()}>
-            More Info
-          </a>
-        </div>
-      </TabsContent>
-      <TabsContent value='share'>
-        <div>
-          <img src='./images/illustration-features-tab-3.svg' alt='tab 3' />
-        </div>
-        <div>
-          {/* <SecondaryHeading tag='h3' class='text-neutral-900'> */}
-          Share your bookmarks
-          {/* </SecondaryHeading> */}
-          <p>
-            Easily share your bookmarks and collections with others. Create a
-            shareable link that you can send at the click of a button.
-          </p>
-          <a href='#' className={buttonVariants()}>
-            More Info
-          </a>
-        </div>
-      </TabsContent>
+      {features.map((f) => (
+        <TabsContent key={f.id} value={f.id}>
+          <div>
+            <img src={f.img} alt={f.name} />
+          </div>
+          <div>
+            {/* <SecondaryHeading tag='h3' class='text-neutral-900'> */}
+            {f.title}
+            {/* </SecondaryHeading> */}
+            <p>{f.description}</p>
+            <a href={f.href} className={buttonVariants()}>
+              More Info
+            </a>
+          </div>
+        </TabsContent>
+      ))}
     </Tabs>
   )
 }
