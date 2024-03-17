@@ -1,6 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs'
 import { buttonVariants } from './ui/button'
-import SecondaryHeading from './ui/secondary-heading.astro'
+import SecondaryHeading from './ui/secondary-heading'
 
 const features = [
   {
@@ -48,9 +48,9 @@ const FeaturesTab = () => {
             <img src={f.img} alt={f.name} />
           </div>
           <div>
-            {/* <SecondaryHeading tag='h3' class='text-neutral-900'> */}
-            {f.title}
-            {/* </SecondaryHeading> */}
+            <SecondaryHeading tag='h3' className='text-neutral-900'>
+              {f.title}
+            </SecondaryHeading>
             <p>{f.description}</p>
             <a href={f.href} className={buttonVariants()}>
               More Info
