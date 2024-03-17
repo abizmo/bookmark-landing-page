@@ -34,8 +34,8 @@ const features = [
 
 const FeaturesTab = () => {
   return (
-    <Tabs defaultValue={features[0].id} className='border border-red-400'>
-      <TabsList>
+    <Tabs defaultValue={features[0].id}>
+      <TabsList className='mb-20'>
         {features.map((f) => (
           <TabsTrigger key={f.id} value={f.id}>
             {f.name}
