@@ -44,14 +44,17 @@ const FeaturesTab = () => {
       </TabsList>
       {features.map((f) => (
         <TabsContent key={f.id} value={f.id}>
-          <div>
+          <div className='justify-self-end'>
             <img src={f.img} alt={f.name} />
           </div>
-          <div>
-            <SecondaryHeading tag='h3' className='text-neutral-900'>
+          <div className='text-center md:text-left'>
+            <SecondaryHeading
+              tag='h3'
+              className='mb-4 md:mb-6 text-neutral-900'
+            >
               {f.title}
             </SecondaryHeading>
-            <p>{f.description}</p>
+            <p className='mb-8'>{f.description}</p>
             <a href={f.href} className={buttonVariants()}>
               More Info
             </a>
