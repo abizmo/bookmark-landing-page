@@ -54,7 +54,7 @@ const FeaturesTab = () => {
             >
               {f.title}
             </SecondaryHeading>
-            <p className='mb-8'>{f.description}</p>
+            <p className='mb-8 text-balance'>{f.description}</p>
             <a href={f.href} className={buttonVariants()}>
               More Info
             </a>
