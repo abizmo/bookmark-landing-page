@@ -1,6 +1,7 @@
 ---
 import SecondaryHeading from '@/components/ui/secondary-heading'
 import {buttonVariants} from '@/components/ui/button'
+import FaqAccordion from '@/components/faq-accordion'
 ---
 <div class='text-center'>
   <SecondaryHeading className='mb-4 text-neutral-900'>
@@ -12,6 +13,7 @@ import {buttonVariants} from '@/components/ui/button'
   </p>
 </div>
 <!-- TODO: FAQs component -->
+<FaqAccordion client:load/>
 
 <div class='text-center'>
   <a href='#' class={buttonVariants()}>More Info</a>
