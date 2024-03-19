@@ -44,7 +44,7 @@ const FeaturesTab = () => {
       </TabsList>
       {features.map((f) => (
         <TabsContent key={f.id} value={f.id}>
-          <div className='justify-self-end'>
+          <div className='justify-self-end relative bg-decorator bg-decorator--reverse'>
             <img src={f.img} alt={f.name} />
           </div>
           <div className='text-center md:text-left'>
