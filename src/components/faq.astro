@@ -1,0 +1,21 @@
+---
+import SecondaryHeading from '@/components/ui/secondary-heading'
+import { buttonVariants } from '@/components/ui/button'
+import FaqAccordion from '@/components/faq-accordion'
+---
+
+<div class='max-w-lg mx-auto'>
+  <div class='text-center'>
+    <SecondaryHeading className='mb-4 text-neutral-900'>
+      Frequently Asked Questions
+    </SecondaryHeading>
+    <p class='mb-10'>
+      Here are some of our FAQs. If you have any other questions you´d like
+      answered please feel free to email us.
+    </p>
+  </div>
+  <FaqAccordion client:load className='mb-14' />
+  <div class='text-center'>
+    <a href='#' class={buttonVariants()}>More Info</a>
+  </div>
+</div>
