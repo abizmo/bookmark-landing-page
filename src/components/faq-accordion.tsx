@@ -33,7 +33,7 @@ const faqs = [
   }
 ]
 
-function FaqAccordion({ className }) {
+function FaqAccordion({ className }: { className?: string }) {
   return (
     <Accordion type='single' collapsible className={cn('w-full', className)}>
       {faqs.map((faq) => (
