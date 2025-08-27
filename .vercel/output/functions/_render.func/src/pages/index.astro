@@ -1,0 +1,36 @@
+---
+import Cta from '@/components/cta.astro'
+import DownloadExtension from '@/components/download-extension.astro'
+import Features from '@/components/features.astro'
+import Hero from '@/components/hero.astro'
+import Faq from '@/components/faq.astro'
+import BaseLayout from '@/layouts/base-layout.astro'
+---
+
+<BaseLayout>
+  <section class='md:py-20 overflow-hidden'>
+    <div class='container'>
+      <Hero />
+    </div>
+  </section>
+  <section class='py-16 md:py-20'>
+    <div class='container'>
+      <Features />
+    </div>
+  </section>
+  <section class='py-16 md:py-20'>
+    <div class='container'>
+      <DownloadExtension />
+    </div>
+  </section>
+  <section class='py-16 mb-12 md:py-20 md:mb-16'>
+    <div class='container'>
+      <Faq />
+    </div>
+  </section>
+  <section class='py-16 bg-primary-400 text-neutral-100'>
+    <div class='container'>
+      <Cta />
+    </div>
+  </section>
+</BaseLayout>
